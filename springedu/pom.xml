@@ -13,8 +13,72 @@
 		<org.aspectj-version>1.9.5</org.aspectj-version>
 		<org.slf4j-version>1.7.30</org.slf4j-version>
 		<jackson-databind-version>2.11.1</jackson-databind-version>
+		<junit-jupiter-version>5.6.2</junit-jupiter-version>
 	</properties>
+	<repositories>
+  	<repository>
+  		<id>oracle</id>
+  		<name>ORACLE JDBC Repository</name>
+  		<url>https://maven.xwiki.org/externals/</url>
+  	</repository>
+  </repositories>
+
+	
 	<dependencies>
+	<!-- mybatis -->
+<dependency>
+    <groupId>org.mybatis</groupId>
+    <artifactId>mybatis</artifactId>
+    <version>3.5.5</version>
+</dependency>
+
+<!-- spring-test시작 -->
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-test</artifactId>
+    <version>${org.springframework-version}</version>
+    <scope>test</scope>
+</dependency>
+<!-- spring-test종료 -->
+
+<!-- junit 시작 -->
+<dependency>
+    <groupId>org.junit.jupiter</groupId>
+    <artifactId>junit-jupiter-api</artifactId>
+    <version>${junit-jupiter-version}</version>
+</dependency>
+<dependency>
+    <groupId>org.junit.jupiter</groupId>
+    <artifactId>junit-jupiter-engine</artifactId>
+    <version>${junit-jupiter-version}</version>
+</dependency>
+<!-- jnit종료 -->
+
+	<!--  mybatis spring -->
+<dependency>
+    <groupId>org.mybatis</groupId>
+    <artifactId>mybatis-spring</artifactId>
+    <version>2.0.5</version>
+</dependency>
+	
+		<!-- oracle 드라이버 -->
+  	<dependency>
+  		<groupId>com.oracle.jdbc</groupId>
+  		<artifactId>ojdbc8</artifactId>
+  		<version>12.2.0.1</version>
+  	</dependency>
+  	
+  	<!-- 커넥션 풀 -->
+		<dependency>
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-dbcp2</artifactId>
+		    <version>2.7.0</version>
+		</dependency>
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-jdbc</artifactId>
+    <version>5.2.7.RELEASE</version>
+</dependency>
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>

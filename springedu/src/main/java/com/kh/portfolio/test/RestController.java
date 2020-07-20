@@ -36,7 +36,7 @@ public class RestController {
 	
 	@GetMapping(value="/3",produces = "application/json")
 	public List<Person> getMembersJson() {
-		List<Person> list = new ArrayList<>();
+		List<Person> list = new ArrayList<Person>();
 		
 		list.add(new Person("홍길동1",10));
 		list.add(new Person("홍길동2",20));
@@ -50,7 +50,7 @@ public class RestController {
 	}
 	@GetMapping(value="/4",produces = "application/xml")
 	public List<Person> getMembersXML() {
-		List<Person> list = new ArrayList<>();
+		List<Person> list = new ArrayList<Person>();
 		
 		list.add(new Person("홍길동1",10));
 		list.add(new Person("홍길동2",20));
@@ -64,7 +64,7 @@ public class RestController {
 	}
 	@GetMapping(value="/5",produces = "application/json")
 	public Map<String,Person> getMembersJson2() {
-		Map<String,Person> map = new HashMap<>();
+		Map<String,Person> map = new HashMap<String, Person>();
 		
 		map.put("1", new Person("홍길동1",10));
 		map.put("2", new Person("홍길동2",20));
@@ -78,7 +78,7 @@ public class RestController {
 	}
 	@GetMapping(value="/6",produces = "application/xml")
 	public Map<String,Person> getMembersXML2() {
-		Map<String,Person> map = new HashMap<>();
+		Map<String,Person> map = new HashMap<String, Person>();
 		
 		map.put("1", new Person("홍길동1",10));
 		map.put("2", new Person("홍길동2",20));
