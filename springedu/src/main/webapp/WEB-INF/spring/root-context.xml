@@ -25,4 +25,14 @@
 		<property name="configLocation" value="classpath:/config/mybatis-config.xml"/>
 		<property name="mapperLocations" value="classpath:/mappers/**/*mapper.xml"/>
 		</bean>
+		
+		<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		  <constructor-arg ref="sqlSessionFactory"/>
+		</bean>
+		<!-- @component :@Controller, @Service, @Repository 중에서
+		                 @Controller를 제외한 클래스만 인스터스화 하도록 설정함 -->
+		<context:component-scan base-package="com.kh.portfolio">
+		 <context:exclude-filter type="annotation" 
+		                         expression="org.springframework.stereotype.Controller"/>
+		</context:component-scan>
 </beans>

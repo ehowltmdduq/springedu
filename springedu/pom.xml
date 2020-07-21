@@ -196,6 +196,15 @@
 	    <version>${jackson-databind-version}</version>
 		</dependency>
 		<!-- 데이터 포맷 변환 끝 -->
+		
+		<!-- 어노테이션을 사용해서 DTO,VO등의 객체에 setter,getter,constructor등 자동생성 -->
+<dependency>
+    <groupId>org.projectlombok</groupId>
+    <artifactId>lombok</artifactId>
+    <version>1.18.12</version>
+    <scope>provided</scope>
+</dependency>
+		
 		       
 	</dependencies>
     <build>

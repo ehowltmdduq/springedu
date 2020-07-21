@@ -39,11 +39,8 @@ public class DBconnection {
 			Assertions.assertNotNull(con);
 			logger.info("DB연결성공");
 		} catch (SQLException e) {
-			logger.info("DB연결실패");
-			// TODO Auto-generated catch block
+			logger.info("DB연결실패");			
 			e.printStackTrace();
 		}
 	}
-	
-
 }
