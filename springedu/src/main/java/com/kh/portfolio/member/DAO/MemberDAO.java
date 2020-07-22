@@ -12,7 +12,7 @@ public interface MemberDAO {
 	//회원전체 조회
 	List<MemberVO>listAllMember();
 	//회원 개별 조회
-	MemberVO listMember(String id);
+	MemberVO listOneMember(String id);
 	//회원탈퇴
 	int outMember(String id, String pw);
 	//로그인

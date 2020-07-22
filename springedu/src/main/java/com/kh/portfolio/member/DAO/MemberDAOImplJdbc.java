@@ -8,6 +8,7 @@ import javax.inject.Inject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -96,6 +97,7 @@ public class MemberDAOImplJdbc implements MemberDAO {
 
 	private RowMapper<MemberVO> getRowMapper() {
 	  RowMapper<MemberVO> rowMapper = new RowMapper<MemberVO>() {
+	  	//수동매핑
 	  	@Override
 	  	public MemberVO mapRow(ResultSet rs, int rowNum) throws SQLException {
 	  		MemberVO memberVO = new MemberVO();
@@ -113,41 +115,88 @@ public class MemberDAOImplJdbc implements MemberDAO {
 	  };
 		return rowMapper;
 	}
-
+  //개별 회원 조회
 	@Override
-	public MemberVO listMember(String id) {
-		// TODO Auto-generated method stub
-		return null;
+	public MemberVO listOneMember(String id) {
+		logger.info("MemberDAO.MemberVO listMember(String id) 호출됨!!");
+		StringBuilder sql = new StringBuilder();
+		sql.append("select id,pw,tel,nickname,gender,birth,cdate,udate ");
+		sql.append("from member ");
+		sql.append("where id = ? ");
+		
+	 return JdbcTemplate.queryForObject(sql.toString(), 
+			                         //테이블 컬럼 이름과 자바 VO객체 속성이름이 동일하면 자동 매핑해줌
+			                        new BeanPropertyRowMapper<MemberVO>(MemberVO.class),			                        
+			                        id);
+		
 	}
 
+	//회원삭제
 	@Override
 	public int outMember(String id, String pw) {
-		// TODO Auto-generated method stub
-		return 0;
+		logger.info("memberDAO.outMember(String id, String pw)호출됨 !! ");
+		int result= 0;
+		StringBuilder sql = new StringBuilder();
+		sql.append("delete from member ");
+		sql.append("where id= ? and pw= ? ");
+		result =  JdbcTemplate.update(sql.toString(),id,pw);
+		logger.info(id);
+		logger.info(pw);
+		return result;
+	
 	}
 
+	//login
 	@Override
 	public MemberVO login(String id, String pw) {
-		// TODO Auto-generated method stub
-		return null;
+		StringBuilder sql = new StringBuilder();
+		sql.append("select id,pw,tel,nickname,gender,region,birth " );
+		sql.append("from member ");
+		sql.append("where id=? and pw=? ");
+    MemberVO memberVO = JdbcTemplate.queryForObject(sql.toString(),new BeanPropertyRowMapper<MemberVO>(MemberVO.class),id,pw);
+    return memberVO;
 	}
 
 	@Override
 	public String findId(String tel, String birth) {
-		// TODO Auto-generated method stub
-		return null;
+		logger.info("memberDAOImpl.String findId(String tel, String birth) 호출!");
+		String id = null;
+		StringBuilder sql = new StringBuilder();
+		sql.append("select id ");
+		sql.append("from member ");
+		sql.append("where tel=? and birth=? ");
+		
+		id = JdbcTemplate.queryForObject(sql.toString(),
+				                        String.class,
+				                        tel,birth); 
+		return id;
 	}
 
 	@Override
 	public String findPw(String id, String birth) {
-		// TODO Auto-generated method stub
-		return null;
+		logger.info("memberDAOImpl.String findPw(String tel, String birth) 호출!");
+		String pw = null;
+		StringBuilder sql = new StringBuilder();
+		sql.append("select pw ");
+		sql.append("from member ");
+		sql.append("where id=? and birth=? ");
+		
+		pw = JdbcTemplate.queryForObject(sql.toString(),
+				                        String.class,
+				                        id,birth); 
+		return pw;
 	}
 
 	@Override
 	public int changePw(String id, String pw) {
-		// TODO Auto-generated method stub
-		return 0;
+		logger.info("memberDAOImpl.String changePw(String id, String pw) 호출됨");
+		int result = 0;
+		StringBuilder sql = new StringBuilder();
+		sql.append("update member ");
+		sql.append("set pw =? ");
+		sql.append("where id =? ");
+		result = JdbcTemplate.update(sql.toString(),pw,id);
+		return result;
 	}
 
 	@Override

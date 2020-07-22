@@ -11,29 +11,35 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.kh.portfolio.member.DAO.MemberDAO;
 import com.kh.portfolio.member.VO.MemberVO;
 
+
+
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(locations = {"file:src/main/webapp/WEB-INF/spring/root-context.xml"})
-public class MemberDAOImplJDBCTest {
+public class MemberDAOImplXMLtest {
 
 	private static Logger logger = 
-			LoggerFactory.getLogger(MemberDAOImplJDBCTest.class);
+			LoggerFactory.getLogger(MemberDAOImplXMLtest.class);
 	
 	@Inject
+//@Qualifier : spring컨테이너에 동일타입의 bean이 존재할경우 명시적으로 참조하고자 하는 bean을 지정할 때 사용
+//spring컨테이너에서 관리되는 bean이름은 특별히 지정해주지않으면 클래스명을 기본값으로 갖는다.
+	@Qualifier("memberDAOImplXML")
 	MemberDAO memberDAO;
 	
 	@Test  //테스트대상에서 포함할때
 	@DisplayName("회원등록")
-	@Disabled
+//	@Disabled
 	void test1() {
 		MemberVO memberVO = new MemberVO();
-		memberVO.setId("test2@test.com");
-		memberVO.setPw("test");
+		memberVO.setId("te22t2@test.com");
+		memberVO.setPw("te24t");
 		memberVO.setTel("010-0000-0000");
 		memberVO.setNickname("test");
 		memberVO.setGender("남");
@@ -50,9 +56,9 @@ public class MemberDAOImplJDBCTest {
 	void modifyMember() {
 		MemberVO memberVO = new MemberVO();
 		memberVO.setId("test2@test.com");
-		memberVO.setPw("3333");
-		memberVO.setTel("010-1230-0000");
-		memberVO.setNickname("test2");
+		memberVO.setPw("test");
+		memberVO.setTel("010-0000-0000");
+		memberVO.setNickname("test");
 		memberVO.setGender("남");
 		memberVO.setRegion("부산");
 		memberVO.setBirth(java.sql.Date.valueOf("2020-03-05"));
@@ -82,10 +88,10 @@ public class MemberDAOImplJDBCTest {
 	}
 	@Test
 	@DisplayName("회원 삭제")
-	@Disabled
+  @Disabled
 	void outMember() {
 		String id = "test2@test.com";
-		String pw = "test";
+		String pw = "123423";
 		int cnt = memberDAO.outMember(id, pw);
 		Assertions.assertEquals(1,cnt);
 		logger.info("cnt:" + cnt);
@@ -95,7 +101,7 @@ public class MemberDAOImplJDBCTest {
 	@Disabled
 	void login() {
 		String id = "test@asd";
-		String pw = "asd";
+		String pw = "123423";
 		MemberVO memberVO = memberDAO.login(id,pw);
 		logger.info(memberVO.toString());
 		
@@ -122,6 +128,7 @@ public class MemberDAOImplJDBCTest {
 	}
 	@Test
 	@DisplayName("비밀번호 변경")
+	@Disabled
 	void changePw() {
 		String id = "test@asd";
 		String pw = "123423";
