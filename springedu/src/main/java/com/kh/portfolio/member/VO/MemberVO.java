@@ -7,7 +7,7 @@ import java.sql.Timestamp;
 import lombok.Data;
 
 
-@Data
+ @Data
 public class MemberVO {
 
 	private String    id;

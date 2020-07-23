@@ -1,5 +1,6 @@
 package com.kh.portfolio.member.SVC;
 
+import java.sql.Date;
 import java.util.List;
 
 import com.kh.portfolio.member.VO.MemberVO;
@@ -18,11 +19,11 @@ public interface MemberSVC {
 		//로그인
 		MemberVO login(String id, String pw);
 		//아이디찾기
-		String findId(String tel, String birth);
+		String findId(String tel, Date birth);
 		//비밀번호 찾기
-		String findPw(String id, String birth);
+		String findPw(String id, Date birth);
 		//비밀번호 변경
-		int changePw(String id, String pw);
+		int changePw(String id, String prepw, String postpw);
 		//프로파일 이미지 조회
 		byte[] findProfileImg(String id);
 	}

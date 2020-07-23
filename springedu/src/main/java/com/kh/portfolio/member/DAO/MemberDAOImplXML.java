@@ -1,5 +1,6 @@
 package com.kh.portfolio.member.DAO;
 
+import java.sql.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -71,31 +72,33 @@ private SqlSession sqlSession;
 
 	//아이디찾기
 	@Override
-	public String findId(String tel, String birth) {
-		Map<String,String> map = new HashMap<>();
+	public String findId(String tel, Date birth) {
 		logger.info("MemberDAOImplXML.findId(String tel, String birth) 호출됨!  ");
-		map.put("tel",tel);
-		map.put("birth",birth);
-		return sqlSession.selectOne("mappers.MemberDAO-mapper.findId",map);
+		MemberVO memberVO = new MemberVO();
+		memberVO.setTel(tel);
+		memberVO.setBirth(birth);
+		return sqlSession.selectOne("mappers.MemberDAO-mapper.findId",memberVO);
 	}
 
 	//비밀번호찾기
 	@Override
-	public String findPw(String id, String birth) {
-		Map<String,String> map = new HashMap<>();
+	public String findPw(String id, Date birth) {
+		
 		logger.info("MemberDAOImplXML.findPw(String id, String birth) 호출됨!  ");
-		map.put("id",id);
-		map.put("birth",birth);
-		return sqlSession.selectOne("mappers.MemberDAO-mapper.findPw",map);
+		MemberVO memberVO = new MemberVO();
+		memberVO.setId(id);
+		memberVO.setBirth(birth);
+		return sqlSession.selectOne("mappers.MemberDAO-mapper.findPw",memberVO);
 	}
 
 	//비밀번호변경
 	@Override
-	public int changePw(String id, String pw) {
-		logger.info("MemberDAOImplXML.changePW(String id, String pw) 호출됨");
+	public int changePw(String id, String prepw, String postpw) {
+		logger.info("MemberDAOImplXML changePw(String id, String prepw, String postpw)  호출됨");
 		Map<String,String> map = new HashMap<>();
 		map.put("id",id);
-		map.put("pw",pw);
+		map.put("prepw",prepw);
+		map.put("postpw",postpw);
 		return sqlSession.update("mappers.MemberDAO-mapper.changePW", map);
 
 	}

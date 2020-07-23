@@ -50,7 +50,7 @@
 
 	<!-- //아이디찾기 -->
 	<select id="findId"
-	         parameterType="map"
+	         parameterType="com.kh.portfolio.member.VO.MemberVO"
 	         resultType="string">
      select id
 		from member
@@ -59,7 +59,7 @@
 
 	<!-- //비밀번호찾기 -->
 	<select id="findPw"
-	         parameterType="map"
+	         parameterType="com.kh.portfolio.member.VO.MemberVO"
 	         resultType="string">
 	          select pw
 		        from member
@@ -70,8 +70,9 @@
 <update id="changePw"
         parameterType="map">
         update member 
-	            set pw =#{pw}
+	            set pw =#{postpw}
 		         where id =#{id}
+		         and pw = #{prepw}
         </update>
 
 
