@@ -32,6 +32,45 @@
     <version>3.5.5</version>
 </dependency>
 
+<!-- 웹관련 라이브러리 시작 -->
+
+<!-- fontawesome -->
+<dependency>
+    <groupId>org.webjars</groupId>
+    <artifactId>font-awesome</artifactId>
+    <version>5.13.1</version>
+</dependency>
+
+<!-- jquery -->
+<dependency>
+    <groupId>org.webjars.bower</groupId>
+    <artifactId>jquery</artifactId>
+    <version>3.5.1</version>
+</dependency>
+
+<!-- bootstrap -->
+<dependency>
+    <groupId>org.webjars</groupId>
+    <artifactId>bootstrap</artifactId>
+    <version>4.5.0</version>
+</dependency>
+
+<!-- pooper.js -->
+<dependency>
+    <groupId>org.webjars</groupId>
+    <artifactId>popper.js</artifactId>
+    <version>2.0.2</version>
+</dependency>
+
+<!-- D3.js -->
+<dependency>
+    <groupId>org.webjars</groupId>
+    <artifactId>d3js</artifactId>
+    <version>5.16.0</version>
+</dependency>
+
+<!-- 웹관련라이브러리 종료 -->
+
 <!-- spring-test시작 -->
 <dependency>
     <groupId>org.springframework</groupId>

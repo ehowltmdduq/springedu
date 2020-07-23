@@ -49,8 +49,9 @@ public class MemberSVCImpl implements MemberSVC {
 //회원개별조회
 	@Override
 	public MemberVO listOneMember(String id) {
-	
-		return null;
+		MemberVO memberVO = null;
+	  memberVO = memberDAO.listOneMember(id);
+		return memberVO;
 	}
 
 //회원삭제
