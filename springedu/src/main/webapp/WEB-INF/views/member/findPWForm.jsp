@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!-- 공통 모듈 -->
-<%@ include file="/WEB-INF/views/include/common.jsp" %>
+<%@ include file="/WEB-INF/views/include/common.jsp"%>
 <title>비밀번호 찾기</title>
 <style>
   #findPWForm * {
   	box-sizing: border-box;
+  	margin:2px;
   }
 	#findPWForm input {
 			width:100%;
@@ -22,15 +23,12 @@
 		letter-spacing: 1em;
 		border-radius: 5px;
 	}
-	#findPWForm #findedPW {
+	#findPWForm #findedPW,
+	#findPWForm .errmsg {
 		color :blue;
+		font-size: 0.7em;
 		font-weight: bold;  
 	}	
-	#findPWForm .errmsg {
-	 	color:red;
-  	font-size: 0.7em;
-		font-weight: bold;  	
-	}
 </style>	
 <script>
       window.addEventListener("load", init);
@@ -46,14 +44,17 @@
       function okBtn_f(event){
     	  event.preventDefault();    	  
     	  const findedPWTag = document.getElementById('findedPW');
+    	  window.close();
+    	  /*
     	  //찾은 비밀번호 발견되었으면
     	  if(findedPWTag.textContent){   
     		  
     	  //부모창 접근은 window.opener속성 이용
 	    	  window.opener//
-	    	        cument.getElementById('pw').value = findedPWTag.textContent;
+	    	        .document.getElementById('pw').value = findedPWTag.textContent;
     	  	window.close();
     	  }
+    	  */
       }
       
       //유효성 체크
@@ -79,6 +80,7 @@
     		  return false;    		  
     	  }
     	  
+    	  return true;
       }
       
       //비밀번호 찾기 버튼 클릭시
@@ -97,7 +99,6 @@
         //AJAX 사용
         //1)XMLHTTPRequest 객체 생성
         const xhttp = new XMLHttpRequest();
-
         //2)서버응답 처리
         //readyState
         // 0 : open()가 호출되지 않은 상태
@@ -109,22 +110,20 @@
         function ajaxCall(event) {
           if (this.readyState == 4 && this.status == 200) {
             console.log(this.responseText);
-
             //json포맷 문자열 => 자바스크립트 ojb
             const jsonObj = JSON.parse(this.responseText);
             
             switch(jsonObj.rtcode){
-            case "success" :
-            	findedPWTag.textContent = jsonObj.value;
+            case "00" :
+            	findedPWTag.textContent = jsonObj.result;
             	errmsgTag.textContent = '';
             	break;
-            case "fail" :
-            	errmsgTag.textContent = jsonObj.value;            	
+            case "01" :
+            	errmsgTag.textContent = jsonObj.result;            	
             	break;
             } 
           }
         }
-
         //3)요청 파라미터만들기(json포맷) { "tel": "010-1234-5678", "birth":"2020-07-01" }
         const reqParam = {};
         reqParam.id    = idTag.value;
@@ -133,17 +132,16 @@
         //js객체를 json포맷 문자열로 변환JSON.stringify()
         //json포맷 문자열을 js객체로 변환JSON.parse()
         const result = JSON.stringify(reqParam);
-
         //4)서비스요청
         xhttp.open(
           "POST",
-          "http://localhost:9080/myweb/member/findPwByRestfull"
+          "http://localhost:9080/${contextPath}/member/pwmail"
         );
         xhttp.setRequestHeader(
-          "Content-Type",
-          "application/x-www-form-urlencoded"
-        );
-        xhttp.send("result=" + result);
+                "Content-Type",
+                "application/json;charset=utf-8"
+      	); 
+        xhttp.send(result);
       }
     </script>
 </head>

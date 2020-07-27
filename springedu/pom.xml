@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.kh</groupId>
@@ -14,110 +15,18 @@
 		<org.slf4j-version>1.7.30</org.slf4j-version>
 		<jackson-databind-version>2.11.1</jackson-databind-version>
 		<junit-jupiter-version>5.6.2</junit-jupiter-version>
-	</properties>
-	<repositories>
+	</properties> 
+	
+	<!-- oracle dirver 저장소 -->
+  <repositories>
   	<repository>
   		<id>oracle</id>
   		<name>ORACLE JDBC Repository</name>
   		<url>https://maven.xwiki.org/externals/</url>
   	</repository>
   </repositories>
-
-	
-	<dependencies>
-	<!-- mybatis -->
-<dependency>
-    <groupId>org.mybatis</groupId>
-    <artifactId>mybatis</artifactId>
-    <version>3.5.5</version>
-</dependency>
-
-<!-- 웹관련 라이브러리 시작 -->
-
-<!-- fontawesome -->
-<dependency>
-    <groupId>org.webjars</groupId>
-    <artifactId>font-awesome</artifactId>
-    <version>5.13.1</version>
-</dependency>
-
-<!-- jquery -->
-<dependency>
-    <groupId>org.webjars.bower</groupId>
-    <artifactId>jquery</artifactId>
-    <version>3.5.1</version>
-</dependency>
-
-<!-- bootstrap -->
-<dependency>
-    <groupId>org.webjars</groupId>
-    <artifactId>bootstrap</artifactId>
-    <version>4.5.0</version>
-</dependency>
-
-<!-- pooper.js -->
-<dependency>
-    <groupId>org.webjars</groupId>
-    <artifactId>popper.js</artifactId>
-    <version>2.0.2</version>
-</dependency>
-
-<!-- D3.js -->
-<dependency>
-    <groupId>org.webjars</groupId>
-    <artifactId>d3js</artifactId>
-    <version>5.16.0</version>
-</dependency>
-
-<!-- 웹관련라이브러리 종료 -->
-
-<!-- spring-test시작 -->
-<dependency>
-    <groupId>org.springframework</groupId>
-    <artifactId>spring-test</artifactId>
-    <version>${org.springframework-version}</version>
-    <scope>test</scope>
-</dependency>
-<!-- spring-test종료 -->
-
-<!-- junit 시작 -->
-<dependency>
-    <groupId>org.junit.jupiter</groupId>
-    <artifactId>junit-jupiter-api</artifactId>
-    <version>${junit-jupiter-version}</version>
-</dependency>
-<dependency>
-    <groupId>org.junit.jupiter</groupId>
-    <artifactId>junit-jupiter-engine</artifactId>
-    <version>${junit-jupiter-version}</version>
-</dependency>
-<!-- jnit종료 -->
-
-	<!--  mybatis spring -->
-<dependency>
-    <groupId>org.mybatis</groupId>
-    <artifactId>mybatis-spring</artifactId>
-    <version>2.0.5</version>
-</dependency>
-	
-		<!-- oracle 드라이버 -->
-  	<dependency>
-  		<groupId>com.oracle.jdbc</groupId>
-  		<artifactId>ojdbc8</artifactId>
-  		<version>12.2.0.1</version>
-  	</dependency>
   	
-  	<!-- 커넥션 풀 -->
-		<dependency>
-		    <groupId>org.apache.commons</groupId>
-		    <artifactId>commons-dbcp2</artifactId>
-		    <version>2.7.0</version>
-		</dependency>
-<dependency>
-    <groupId>org.springframework</groupId>
-    <artifactId>spring-jdbc</artifactId>
-    <version>5.2.7.RELEASE</version>
-</dependency>
+	<dependencies>
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -128,7 +37,7 @@
 				<exclusion>
 					<groupId>commons-logging</groupId>
 					<artifactId>commons-logging</artifactId>
-				 </exclusion>
+				</exclusion>
 			</exclusions>
 		</dependency>
 		<dependency>
@@ -136,14 +45,14 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
-				
+
 		<!-- AspectJ -->
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjrt</artifactId>
 			<version>${org.aspectj-version}</version>
-		</dependency>	
-		
+		</dependency>
+
 		<!-- Logging -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -193,7 +102,7 @@
 			<artifactId>javax.inject</artifactId>
 			<version>1</version>
 		</dependency>
-				
+
 		<!-- Servlet -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -212,76 +121,200 @@
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
-	
+
 		<!-- Test -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.7</version>
 			<scope>test</scope>
-		</dependency> 
-		
+		</dependency>
+
 		<!-- 데이터 포맷 변환 시작 -->
 		<!-- json포맷을 java객체로 변환 or java객체를 json포맷으로 변환 -->
 		<dependency>
-	    <groupId>com.fasterxml.jackson.core</groupId>
-	    <artifactId>jackson-databind</artifactId>
-	    <version>${jackson-databind-version}</version>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson-databind-version}</version>
 		</dependency>
-		<!-- xml포맷을 java객체로 변환 or java객체를 json맷으로 변환 -->
+		<!-- xml포맷을 java객체로 변환 or java객체를 xml포맷으로 변환 -->
 		<dependency>
-	    <groupId>com.fasterxml.jackson.dataformat</groupId>
-	    <artifactId>jackson-dataformat-xml</artifactId>
-	    <version>${jackson-databind-version}</version>
+			<groupId>com.fasterxml.jackson.dataformat</groupId>
+			<artifactId>jackson-dataformat-xml</artifactId>
+			<version>${jackson-databind-version}</version>
 		</dependency>
 		<!-- 데이터 포맷 변환 끝 -->
+		<!-- DB연동 시작 -->
+		<!-- spring jdbc -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-jdbc</artifactId>
+		    <version>${org.springframework-version}</version>
+		</dependency>
+		
+  	<!-- oracle 드라이버 -->
+  	<dependency>
+  		<groupId>com.oracle.jdbc</groupId>
+  		<artifactId>ojdbc8</artifactId>
+  		<version>12.2.0.1</version>
+  	</dependency>
+  	
+  	<!-- 커넥션 풀 -->
+		<dependency>
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-dbcp2</artifactId>
+		    <version>2.7.0</version>
+		</dependency>
+		
+		<!-- mybatis -->
+		<dependency>
+	    <groupId>org.mybatis</groupId>
+	    <artifactId>mybatis</artifactId>
+	    <version>3.5.5</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.mybatis</groupId>
+		    <artifactId>mybatis-spring</artifactId>
+		    <version>2.0.5</version>
+		</dependency>
+		<!-- DB연동 종료 -->
+			
+		<!-- Spring-test 시작 -->	
+		<dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-test</artifactId>
+	    <version>${org.springframework-version}</version>
+	    <scope>test</scope>
+		</dependency>
+		<!-- Spring-test 종료 -->
+			
+		<!-- Junit 단위 테스트를 하기위한 프레임워크 시작 -->
+		<dependency>
+	    <groupId>org.junit.jupiter</groupId>
+	    <artifactId>junit-jupiter-api</artifactId>
+	    <version>${junit-jupiter-version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.junit.jupiter</groupId>
+		    <artifactId>junit-jupiter-engine</artifactId>
+		    <version>${junit-jupiter-version}</version>
+		</dependency>			
+		<!-- Junit 종료 -->		
 		
 		<!-- 어노테이션을 사용해서 DTO,VO등의 객체에 setter,getter,constructor등 자동생성 -->
-<dependency>
-    <groupId>org.projectlombok</groupId>
-    <artifactId>lombok</artifactId>
-    <version>1.18.12</version>
-    <scope>provided</scope>
-</dependency>
+		<dependency>
+		    <groupId>org.projectlombok</groupId>
+		    <artifactId>lombok</artifactId>
+		    <version>1.18.12</version>
+		    <scope>provided</scope>
+		</dependency>
 		
-		       
+		<!-- 웹관련 라이브러리 시작 -->
+		<!-- fontawesome -->
+		<dependency>
+		    <groupId>org.webjars</groupId>
+		    <artifactId>font-awesome</artifactId>
+		    <version>5.13.1</version>
+		</dependency>
+			
+		<!-- jquery -->
+		<dependency>
+    	<groupId>org.webjars</groupId>
+    	<artifactId>jquery</artifactId>
+    	<version>3.5.1</version>
+		</dependency>
+		
+		<!-- bootstrap -->
+		<dependency>
+    	<groupId>org.webjars</groupId>
+    	<artifactId>bootstrap</artifactId>
+    	<version>4.5.0</version>
+		</dependency>			
+		<dependency>
+    	<groupId>org.webjars</groupId>
+    	<artifactId>popper.js</artifactId>
+    	<version>2.0.2</version>
+		</dependency>
+		
+		<!-- 시각화 라이브러리 d3.js -->
+		<dependency>
+    	<groupId>org.webjars</groupId>
+    	<artifactId>d3js</artifactId>
+    	<version>5.16.0</version>
+		</dependency>
+		
+		<!-- 웹관련 라이브러리 종료 -->
+		
+		<!-- mail 시작-->
+		<dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-context-support</artifactId>
+	    <version>${org.springframework-version}</version>
+		</dependency>
+		
+		<dependency>
+	    <groupId>javax.mail</groupId>
+	    <artifactId>javax.mail-api</artifactId>
+	    <version>1.6.2</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>com.sun.mail</groupId>
+		    <artifactId>javax.mail</artifactId>
+		    <version>1.6.2</version>
+		</dependency>
+		<!-- mail 종료-->
+		
+		<!-- Jasypt를 이용한 Properties 파일 암호화 -->
+		<dependency>
+    	<groupId>org.jasypt</groupId>
+    	<artifactId>jasypt</artifactId>
+    	<version>1.9.3</version>
+		</dependency>
+		<dependency>
+	    <groupId>org.jasypt</groupId>
+	    <artifactId>jasypt-spring31</artifactId>
+	    <version>1.9.3</version>
+		</dependency>
+		
 	</dependencies>
-    <build>
-        <plugins>
-            <plugin>
-                <artifactId>maven-eclipse-plugin</artifactId>
-                <version>2.9</version>
-                <configuration>
-                    <additionalProjectnatures>
-                        <projectnature>org.springframework.ide.eclipse.core.springnature</projectnature>
-                    </additionalProjectnatures>
-                    <additionalBuildcommands>
-                        <buildcommand>org.springframework.ide.eclipse.core.springbuilder</buildcommand>
-                    </additionalBuildcommands>
-                    <downloadSources>true</downloadSources>
-                    <downloadJavadocs>true</downloadJavadocs>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.5.1</version>
-                <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
-                    <compilerArgument>-Xlint:all</compilerArgument>
-                    <showWarnings>true</showWarnings>
-                    <showDeprecation>true</showDeprecation>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>1.2.1</version>
-                <configuration>
-                    <mainClass>org.test.int1.Main</mainClass>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<version>2.9</version>
+				<configuration>
+					<additionalProjectnatures>
+						<projectnature>org.springframework.ide.eclipse.core.springnature</projectnature>
+					</additionalProjectnatures>
+					<additionalBuildcommands>
+						<buildcommand>org.springframework.ide.eclipse.core.springbuilder</buildcommand>
+					</additionalBuildcommands>
+					<downloadSources>true</downloadSources>
+					<downloadJavadocs>true</downloadJavadocs>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.5.1</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+					<compilerArgument>-Xlint:all</compilerArgument>
+					<showWarnings>true</showWarnings>
+					<showDeprecation>true</showDeprecation>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>1.2.1</version>
+				<configuration>
+					<mainClass>org.test.int1.Main</mainClass>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>

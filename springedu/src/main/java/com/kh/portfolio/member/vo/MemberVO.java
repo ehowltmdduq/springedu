@@ -1,4 +1,4 @@
-package com.kh.portfolio.member.VO;
+package com.kh.portfolio.member.vo;
 
 
 import java.sql.Date;

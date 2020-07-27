@@ -1,5 +1,6 @@
 package com.kh.portpolio.member;
 
+import java.sql.Date;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -15,13 +16,13 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import com.kh.portfolio.member.DAO.MemberDAO;
-import com.kh.portfolio.member.VO.MemberVO;
+import com.kh.portfolio.member.dao.MemberDAO;
+import com.kh.portfolio.member.vo.MemberVO;
 
 
 
 @ExtendWith(SpringExtension.class)
-@ContextConfiguration(locations = {"file:src/main/webapp/WEB-INF/spring/root-context.xml"})
+@ContextConfiguration(locations = {"file:src/main/webapp/WEB-INF/spring/*.xml"})
 public class MemberDAOImplXMLtest {
 
 	private static Logger logger = 
@@ -35,7 +36,7 @@ public class MemberDAOImplXMLtest {
 	
 	@Test  //테스트대상에서 포함할때
 	@DisplayName("회원등록")
-//	@Disabled
+	@Disabled
 	void test1() {
 		MemberVO memberVO = new MemberVO();
 		memberVO.setId("te22t2@test.com");
@@ -111,19 +112,22 @@ public class MemberDAOImplXMLtest {
 	@Disabled
 	void findId() {
 		String tel = "000-0000-0000";
-		String birth = "2020-04-02";
-		String id = memberDAO.findId(tel, birth);
+		//String birth = "2020-04-02";
+		Date birth = java.sql.Date.valueOf("2000-01-02");			
+		String id = memberDAO.findID(tel, birth);
 		Assertions.assertEquals("test@asd",id);
 		logger.info(id);
 	}
 	@Test
 	@DisplayName("비밀번호찾기")
-	@Disabled
+//	@Disabled
 	void findPw() {
-		String id = "test@asd";
-		String birth = "2020-04-02";
-		String pw = memberDAO.findPw(id, birth);
-		Assertions.assertEquals("asd",pw);
+		String id = "ehowltmdduq@naver.com";
+		//String birth = "2020-04-02";
+		String tel = "010-0000-0000";
+		Date birth = java.sql.Date.valueOf("2000-01-02");	
+		String pw = memberDAO.findPW(id, tel, birth);
+		Assertions.assertEquals("test",pw);
 		logger.info(pw);
 	}
 	@Test
@@ -131,9 +135,10 @@ public class MemberDAOImplXMLtest {
 	@Disabled
 	void changePw() {
 		String id = "test@asd";
-		String pw = "123423";
-		int result = memberDAO.changePw(id, pw);
+		String prepw = "123423";
+		String postpw= "12345";
+		int result = memberDAO.changePW(id, prepw, postpw);
 //		Assertions.assertEquals(1, result);
-		Assertions.assertEquals(pw,memberDAO.listOneMember(id).getPw());
+		Assertions.assertEquals(postpw,memberDAO.listOneMember(id).getPw());
 	}
 	}

@@ -130,11 +130,11 @@
         //4)서비스요청
         xhttp.open(
           "POST",
-          "http://localhost:9080/myweb/member/findIdByRestfull"
+          "http://localhost:9080/member/Id"
         );
         xhttp.setRequestHeader(
           "Content-Type",
-          "application/x-www-form-urlencoded"
+          "application/json;charset=utf-8"
         );
         xhttp.send("result=" + result);
       }
