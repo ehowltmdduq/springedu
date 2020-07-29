@@ -4,7 +4,7 @@
     <div class="container container-n">
     <fmt:bundle basename="resource.menu">
       <ul>
-        <li><a href="#"><fmt:message key="menu.webstd"/> </a></li>
+        <li><a href="${contextPath }/board/writeForm"><fmt:message key="menu.webstd"/> </a></li>
         <li><a href="#"><fmt:message key="menu.java"/></a></li>
         <li><a href="#"><fmt:message key="menu.android"/></a></li>
         <li><a href="#"><fmt:message key="menu.db"/></a></li>
