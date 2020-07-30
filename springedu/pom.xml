@@ -46,13 +46,28 @@
 			<version>${org.springframework-version}</version>
 		</dependency>
 
+<!--AOP의존성 시작 -->
 		<!-- AspectJ -->
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjrt</artifactId>
 			<version>${org.aspectj-version}</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>${org.aspectj-version}</version>
+		</dependency>
+<!-- https://mvnrepository.com/artifact/org.springframework/spring-aop -->
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-aop</artifactId>
+    <version>${org.springframework-version}</version>
+</dependency>
 
+    
+<!-- AOP의존성 끝 -->
 		<!-- Logging -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -277,6 +292,12 @@
 	    <artifactId>jasypt-spring31</artifactId>
 	    <version>1.9.3</version>
 		</dependency>
+		<!-- 파일업로드-->
+<dependency>
+    <groupId>commons-fileupload</groupId>
+    <artifactId>commons-fileupload</artifactId>
+    <version>1.4</version>
+</dependency>
 		
 	</dependencies>
 	<build>

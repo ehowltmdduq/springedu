@@ -54,8 +54,8 @@ public class MemberController {
 	// 회원가입처리
 	@PostMapping("/join")
 	public String join(MemberVO memberVO, Model model) {
-		logger.info("MemberController.join(MemberVO memberVO)호출됨!");
-		logger.info(memberVO.toString());
+//		logger.info("MemberController.join(MemberVO memberVO)호출됨!");
+//		logger.info(memberVO.toString());
 
 		int result = memberSVC.joinMember(memberVO);
 		if (result == 1) {

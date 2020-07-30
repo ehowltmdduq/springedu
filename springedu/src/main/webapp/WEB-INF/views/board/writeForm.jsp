@@ -5,7 +5,7 @@
 <title>게시글</title>
 <link rel="stylesheet" href="${contextPath }/css/board/board.css">
 <link rel="stylesheet" href="${contextPath }/css/board/writeForm.css">
-<script type="text/javascript" defer src="${contextpath }/js/board/writeForm.js"></script>
+<script defer src="${contextPath }/js/board/writeForm.js"></script>
 <style>
   /* 메뉴 영역 */
   nav{}
@@ -30,8 +30,11 @@
 	<main>
 		<div class="container">
 			<div class="content">
-				<form method="post" action="${contextPath }/board/write">
-				  <legend>게시글 작성</legend>
+				<form id="writeForm"
+				      method="post"
+				      action="${contextPath }/board/write"
+				      enctype="multipart/form-data">
+      <legend>게시글 작성</legend>
       <ul>
         <li>
           <label for="boardCategoryVO.cid">분류</label
@@ -59,16 +62,21 @@
           ></textarea>
         </li>
         <li>
-          <label for="">첨부</label><input type="file" name="" id="" multiple />
+          <label for="">첨부</label><input type="file" name="files" id="files" multiple />
         </li>
         <li>
-          <button>등록</button>
-          <button>취소</button>
-          <button>목록</button>
+          <button id="writeBtn" type="button" class="btn btn-outline-success">
+            등록
+          </button>
+          <button id="cancelBtn" type="button" class="btn btn-outline-danger">
+            취소
+          </button>
+          <button id="listBtn" type="button" class="btn btn-outline-primary">
+            목록
+          </button>
         </li>
       </ul>
     </form>
-
   <!-- 푸터 -->
   <%@ include file="../include/footer.jsp" %>  
 </body>

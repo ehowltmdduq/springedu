@@ -1,3 +1,0 @@
-#openBtn {
-	background-color: yellow;
-}
